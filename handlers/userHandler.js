@@ -24,7 +24,7 @@ exports.loginUser = async (req, res) => {
         if (!user) {
             return res.status(401).send('invalid user or password');
         }
-        const validPassword = bcrypt.compareSync(password, user.password);
+        const validPassword = await bcrypt.compareSync(password, user.password);
         if (!validPassword) {
             return res.status(400).send('invalid user or password');
         }
